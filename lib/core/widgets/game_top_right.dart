@@ -20,7 +20,7 @@ class GameTopRightWidget extends StatelessWidget {
         color: AppColors.c3D2963,
       ),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.end,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           // Column(
           //   mainAxisAlignment: MainAxisAlignment.center,
@@ -46,7 +46,7 @@ class GameTopRightWidget extends StatelessWidget {
           const SizedBox(width: 40),
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.end,
+            // crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               const Text(
                 'Moves',

@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -6,6 +8,9 @@ part 'puzzle_state.dart';
 part 'puzzle_bloc.freezed.dart';
 
 class PuzzleBloc extends Bloc<PuzzleEvent, PuzzleState> {
+  // Timer? _timer;
+  // static const int _duration = 0;
+
   PuzzleBloc() : super(_Initial()) {
     on<PuzzleEvent>((event, emit) async {
       if (event is _newGame) {
@@ -20,7 +25,8 @@ class PuzzleBloc extends Bloc<PuzzleEvent, PuzzleState> {
     while (true) {
       final list = List.generate(16, (i) => i)..shuffle();
       if (_isSolvable(list)) {
-        emit(state.copyWith(numbers: list, moves: 0, time: 0, isFinished: false));
+        emit(state.copyWith(numbers: list, moves: 0, isFinished: false, time: state.time));
+
         break;
       }
     }
@@ -37,14 +43,19 @@ class PuzzleBloc extends Bloc<PuzzleEvent, PuzzleState> {
     final rwZero = indexZero ~/ 4;
     final rwItem = event.index ~/ 4;
 
-    bool condition = (clZero == clItem && (rwItem - rwZero).abs() == 1) ||
-        (rwZero == rwItem && (clItem - clZero).abs() == 1);
+    bool condition = (clZero == clItem && (rwItem - rwZero).abs() == 1) || (rwZero == rwItem && (clItem - clZero).abs() == 1);
+    // _timer?.cancel();
+    // _timer = Timer.periodic(Duration(seconds: 1), (timer) {
+    //   final int newDuration = state.time + 1;
+    // });
+    emit(state.copyWith(time: state.time + 1));
 
     if (condition) {
       list[indexZero] = list[event.index];
       list[event.index] = 0;
       if (_isSorted(list)) {
-        emit(state.copyWith(isFinished: true));
+        // _timer?.cancel();
+        emit(state.copyWith(isFinished: true, time: 0));
       }
       emit(state.copyWith(
         numbers: list,
@@ -53,7 +64,6 @@ class PuzzleBloc extends Bloc<PuzzleEvent, PuzzleState> {
     }
   }
 }
-
 
 bool _isSolvable(List<int> puzzle) {
   int n = 4; // Since it's a 15-puzzle, the grid is 4x4
@@ -103,5 +113,3 @@ bool _isSorted(List<int> numbers) {
   }
   return true;
 }
-
-

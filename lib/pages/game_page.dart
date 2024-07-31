@@ -17,19 +17,6 @@ class GamePage extends StatefulWidget {
 
 class _GamePageState extends State<GamePage> {
   final bloc = PuzzleBloc()..add(const PuzzleEvent.newGame());
-  // Timer _timer = Timer.periodic(Duration.zero, (Timer t) {});
-
-  // void startTimer() {
-  //   const oneSec = Duration(seconds: 1);
-  //   _timer = Timer.periodic(
-  //     oneSec,
-  //     (Timer timer) {
-  //       setState(() {
-  //         ;
-  //       });
-  //     },
-  //   );
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -64,6 +51,7 @@ class _GamePageState extends State<GamePage> {
                       height: 60,
                       onPressed: () {
                         Navigator.pop(context);
+                        Navigator.pop(context);
                         bloc.add(const PuzzleEvent.newGame());
                       },
                       color: const Color(0xff3D2963),
@@ -89,8 +77,7 @@ class _GamePageState extends State<GamePage> {
           builder: (context, state) {
             return Scaffold(
               body: Padding(
-                padding:
-                    const EdgeInsets.symmetric(vertical: 0, horizontal: 10),
+                padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 10),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -99,8 +86,7 @@ class _GamePageState extends State<GamePage> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        GameTopLeftWidget(
-                            onTap: () => bloc.add(const PuzzleEvent.newGame())),
+                        GameTopLeftWidget(onTap: () => bloc.add(const PuzzleEvent.newGame())),
                         GameTopRightWidget(
                           timer: state.time,
                           moves: state.moves,
@@ -112,8 +98,7 @@ class _GamePageState extends State<GamePage> {
                       height: MediaQuery.of(context).size.height * 0.5,
                       child: Center(
                         child: GridView.builder(
-                          gridDelegate:
-                              const SliverGridDelegateWithFixedCrossAxisCount(
+                          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                             crossAxisCount: 4,
                             crossAxisSpacing: 5,
                             mainAxisSpacing: 5,

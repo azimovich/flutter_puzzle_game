@@ -1,8 +1,8 @@
 gen:
-   dart run build_runner build
+    dart run build_runner build
 
 gen_auto:
-   dart run build_runner watch --delete-conflicting-outputs
+        dart run build_runner watch --delete-conflicting-outputs
 
 clean:
    flutter clean

@@ -63,8 +63,8 @@ class _GamePageState extends State<GamePage> {
                       minWidth: double.infinity,
                       height: 60,
                       onPressed: () {
-                        bloc.add(const PuzzleEvent.newGame());
                         Navigator.pop(context);
+                        bloc.add(const PuzzleEvent.newGame());
                       },
                       color: const Color(0xff3D2963),
                       shape: RoundedRectangleBorder(

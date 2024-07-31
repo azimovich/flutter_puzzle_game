@@ -22,27 +22,27 @@ class GameTopRightWidget extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
-          Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: [
-              const Text(
-                'timer',
-                style: TextStyle(
-                  fontSize: 14,
-                  color: Colors.white,
-                ),
-              ),
-              Text(
-                '$timer',
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ],
-          ),
+          // Column(
+          //   mainAxisAlignment: MainAxisAlignment.center,
+          //   crossAxisAlignment: CrossAxisAlignment.end,
+          //   children: [
+          //     const Text(
+          //       'timer',
+          //       style: TextStyle(
+          //         fontSize: 14,
+          //         color: Colors.white,
+          //       ),
+          //     ),
+          //     Text(
+          //       '$timer',
+          //       style: const TextStyle(
+          //         color: Colors.white,
+          //         fontSize: 18,
+          //         fontWeight: FontWeight.bold,
+          //       ),
+          //     ),
+          //   ],
+          // ),
           const SizedBox(width: 40),
           Column(
             mainAxisAlignment: MainAxisAlignment.center,

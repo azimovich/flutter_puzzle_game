@@ -35,6 +35,7 @@ class _GamePageState extends State<GamePage> {
                       'Excellent!',
                       style: TextStyle(
                         color: Color(0xff57407c),
+                        fontFamily: "Pacifico",
                       ),
                     ),
                   ),
@@ -118,12 +119,25 @@ class _GamePageState extends State<GamePage> {
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(8),
                                     ),
+                                    padding: const EdgeInsets.all(0),
                                     child: Text(
                                       '${state.numbers[i]}',
-                                      style: const TextStyle(
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
                                         color: Colors.white,
-                                        fontSize: 34,
+                                        fontSize: 60,
                                         fontWeight: FontWeight.w600,
+                                        fontFamily: "Pacifico",
+                                        shadows: [
+                                          Shadow(
+                                            color: textShadow(
+                                              number: i,
+                                              currentNum: state.numbers[i],
+                                            ), // Choose the color of the shadow
+                                            blurRadius: 3.0, // Adjust the blur radius for the shadow effect
+                                            offset: const Offset(3.0, 3.0), // Set the horizontal and vertical offset for the shadow
+                                          ),
+                                        ],
                                       ),
                                     ),
                                   )
@@ -158,5 +172,16 @@ Color buttonColor({
     return AppColors.cE88A45;
   } else {
     return AppColors.c6AC6B8;
+  }
+}
+
+Color textShadow({
+  required int number,
+  required int currentNum,
+}) {
+  if (number + 1 == currentNum) {
+    return const Color.fromARGB(255, 175, 76, 5);
+  } else {
+    return const Color.fromARGB(255, 7, 139, 120);
   }
 }

@@ -12,8 +12,8 @@ dependencies:
   flutter:
     sdk: flutter
 
-  flutter_bloc: ^8.1.6
   freezed: ^2.5.2
+  flutter_bloc: ^8.1.6
   cupertino_icons: ^1.0.6
 
 dev_dependencies:
@@ -26,3 +26,8 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+
+  fonts:
+    - family: Pacifico
+      fonts:
+        - asset: assets\fonts\Pacifico-Regular.ttf
